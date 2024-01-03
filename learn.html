@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JavaScript</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="script.js">
+    </script>
+     <script src="test.js">
+    </script>
+</head>
+<body id="body">
+
+    <a href="javascript:void(0);">
+        Useless link
+      </a> <br>
+      
+      <a href="javascript:void(document.body.style.backgroundColor='red');">
+        Click me to change the background color of body to red
+      </a>
+
+    <p><a href="index.html">Home</a></p>
+
+    <h2 onclick="this.style.fontSize='35px'">Event (click change fontSize)</h2>
+    <button 
+        onmouseover="this.style.backgroundColor='red'" 
+        onmouseout="this.style.backgroundColor='greenyellow'" 
+        style="background-color: greenyellow;"> EVENT mouse
+    </button>
+
+    <button 
+        onmousedown="document.getElementById('body').style.background='gray'"
+        onmouseup="document.getElementById('body').style.background='white'"
+        style="background-color: white;"> Change Background
+    </button>
+
+    <button onclick="window.print()">Print this page</button>
+
+<hr>
+
+    <h2>BMI Calculate</h2>
+    <form>
+        <label for="">จำนวนคนที่ต้องการคำนวณ : </label>
+        <input type="text" id="round">
+        <button type="button" onclick="AddButton()">Submit</button>
+    </form>
+    <p id="buttonBMI"></p>
+    <p id="result_bmi"></p>
+
+<hr>
+
+    <h2>Age Calculate</h2>
+    <form>
+        <label for="">Birth Date : </label>
+        <input type="date" id="birth">
+        <button type="button" onclick="CalAge()">Submit</button>
+    </form>
+    <p id="result_age"></p>
+
+<hr>
+
+    <h2>Volume Sphere</h2>
+    <form>
+        <label for="">Radius : </label>
+        <input type="text" id="rad" placeholder="cm">
+        <button type="button" onclick="CalVol('inner')">Show result innerHTML</button>
+        <button type="button" onclick="CalVol('write')">Show result document.write</button>
+    </form>
+    <p id="result_vol"></p>
+
+<hr>
+    <h2>Calculator(Arithmetic Operators)</h2>
+    <form>
+        <input type="text" id="num1_1">
+        <select name="" id="operator_1">
+            <option selected disabled value="">-- choose --</option>
+            <option value="add"> บวก </option>
+            <option value="sub"> ลบ </option>
+            <option value="mul"> คูณ </option>
+            <option value="div"> หาร </option>
+            <option value="ex"> ยกกำลัง </option>
+            <option value="mod"> mod </option>
+        </select>
+        <input type="text" id="num2_1">
+        <button type="button" onclick="CalArith()">Submit</button>
+        <p id="result_CalArith"></p>
+    </form>
+
+<hr>
+    <h2>Calculator(Assignment Operators)</h2>
+    <form>
+        <input type="text" id="num1_2">
+        <select name="" id="operator_2">
+            <option selected disabled value="">-- choose --</option>
+            <option value="add_eq"> บวก เท่ากับ </option>
+            <option value="sub_eq"> ลบ เท่ากับ </option>
+            <option value="mul_eq"> คูณ เท่ากับ </option>
+            <option value="div_eq"> หาร เท่ากับ </option>
+            <option value="ex_eq"> ยกกำลัง เท่ากับ </option>
+            <option value="mod_eq"> mod เท่ากับ </option>
+        </select>
+        <input type="text" id="num2_2">
+        <button type="button" onclick="CalAssign()">Submit</button>
+        <p id="result_CalAssign"></p>
+    </form>
+
+<hr>
+
+    <h2>Comparison Operators</h2>
+        <form>
+            <select name="" id="type">
+                <option selected disabled value="">-- type --</option>
+                <option value="string">string</option>
+                <option value="number">number</option>
+            </select>
+            <input type="text" id="num1_3">
+            <select name="" id="operator_3">
+                <option selected disabled value="">-- operators --</option>
+                <option value="eq">equal to</option>
+                <option value="eq_val_typ">equal value and equal type</option>
+                <option value="not_eq">not equal</option>
+                <option value="not_eq_val_typ">not equal value or not equal type</option>
+                <option value="gt">greater than</option>
+                <option value="lt">less than</option>
+                <option value="gte">greater than or equal to</option>
+                <option value="lte">less than or equal to</option>
+            </select>
+            <input type="text" id="num2_3">
+            <button type="button" onclick="CalCompar()">Submit</button>
+            <p id="result_CalCompar"></p>
+        </form>
+
+<hr>
+
+<h2>String Method</h2>
+KiwiAppleBanana
+    <form>
+        <label for="">All Text</label> <br>
+        <textarea id="text" cols="30" rows="3"></textarea> <br>
+        <button type="button" onclick="CountText()">Submit</button>
+    </form>
+    <p id="result_count"></p>
+
+<hr>
+
+    <h2>Number Method</h2>
+    <form>
+        <label for="">Number</label>
+        <input type="text" id="num">
+        <button type="button" onclick="ViewNumber()">Submit</button>
+    </form>
+    <p id="result_num"></p>
+
+<hr>
+
+</body>
+</html>

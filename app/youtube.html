@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+</head>
+<body>
+    <div class="topnav">
+        <table class="table-head">
+            <tr>
+                <td>
+                    <img class="img-icon" style="float: left;" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Girl in a jacket" width="120" height="20">
+                    <input class="input-search" type="text" placeholder="Search..">
+                    <button class="search-container" type="submit"><i class="fa fa-search"></i></button>
+                    <button><i class="fa fa-microphone"></i></button>
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                    <a href="#">Link</a>
+                </td>
+            </tr>   
+        </table>
+
+    </div>
+    <div class="page">
+        <div class="column1">
+            <div>
+                <p id="showvideo"></p>
+            <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
+            <script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+            <h2 id="title">Test subtitle</h2>    
+            </div>
+            <div >
+                <table class="profile">
+                    <tr>
+                        <td class="profile-logo" style="text-align: left;">
+                            <img src="https://yt3.googleusercontent.com/ytc/AIf8zZTeXMihZQhfOn-r4OK4kCzEtAilKQMuJxqWVJfrhA=s176-c-k-c0x00ffffff-no-rj" alt="profile" width="50" height="50">
+                        </td>
+                        <td class="profile-name">
+                            TrueVisionsOfficial <br>
+                            4.72M subscribers
+                        </td>
+                        <td class="profile-follow">
+                            <button>follow</button>
+                        </td>
+                        <td class="profile-share">
+                            <a href="#">Link</a>
+                            <a href="#">Link</a>
+                            <a href="#">Link</a>
+                        </td>
+                    </tr>
+                </table>   
+            </div>
+            <div class="description">
+                <b>794,131 views  Dec 28, 2023  #20 on Trending</b><br>
+                ผลบอลเมื่อคืนนี้ ฟุตบอล พรีเมียร์ลีก เอฟเวอร์ตัน 1-3 แมนซิตี้ ประจำคืนวันที่ 27 ธันวาคม 2566 <br>
+                 ที่สนาม กูดิสัน พาร์ค : เอฟเวอร์ตัน เปิดบ้านแพ้ให้กับ แมนซิตี้ ในศึกพรีเมียร์ลีก บ็อกซิ่งเดย์เมื่อคืนที่ผ่านมา
+            </div>
+            <div class="comment">
+                <h3>774 Comments</h3> 
+            </div>
+
+        </div>
+        <div class="column2">
+            <p id="category"></p>
+            <p id="list"></p>
+        </div>
+        <script src="../videolists.js">
+        </script>
+    </div>
+</body>
+</html>
