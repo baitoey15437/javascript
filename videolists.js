@@ -303,15 +303,28 @@ videojs('video_default').play();
 
 var video_category = videosList[0].samples;
 for (let y in video_category ){
-  document.getElementById("list_video").innerHTML += 
-  `<a href="#" onclick="getViideo(0,${y})">
-  <table class="list">
-    <tr>
-        <td class="list-img"><img src="${video_category[y].img}" alt="" width="150" height="100"></td>
-        <td class="list-desc">${video_category[y].name}</td>
-      </tr>
-  </table>
-  `
+  if (y == 0) {
+    document.getElementById("list_video").innerHTML += 
+    `<a href="#" onclick="getViideo(0,${y})">
+    <table class="list active">
+      <tr>
+          <td class="list-img"><img src="${video_category[y].img}" alt="" width="150" height="100"></td>
+          <td class="list-desc">${video_category[y].name}</td>
+        </tr>
+    </table>
+    `
+  } else {
+    document.getElementById("list_video").innerHTML += 
+    `<a href="#" onclick="getViideo(0,${y})">
+    <table class="list">
+      <tr>
+          <td class="list-img"><img src="${video_category[y].img}" alt="" width="150" height="100"></td>
+          <td class="list-desc">${video_category[y].name}</td>
+        </tr>
+    </table>
+    `
+  }
+  
 }
 
 var category = videosList;
@@ -319,6 +332,16 @@ for (let x in category ){
   document.getElementById("category_name").innerHTML += 
   `<button onclick = "ListViideo(${x})">${category[x].name}</button>`
 }
+
+
+let ListVideo = document.querySelectorAll('.list');
+ListVideo.forEach(video => {
+  video.onclick = () => {
+    ListVideo.forEach(list => list.classList.remove("active"));
+    video.classList.add("active")
+  }
+})
+
 
 const ListViideo = (x) => {
   document.getElementById("list_video").innerHTML = "";
@@ -333,6 +356,14 @@ const ListViideo = (x) => {
         </tr>
     </table>`
   }
+  let ListVideo = document.querySelectorAll('.list');
+  ListVideo.forEach(video => {
+    video.onclick = () => {
+      ListVideo.forEach(list => list.classList.remove("active"));
+      video.classList.add("active")
+    }
+})
+
 }
 
 const getViideo = (category_index,video_index) => {

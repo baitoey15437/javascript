@@ -203,6 +203,10 @@ a:hover {
   width: 100%;
 }
 
+.list.active {
+  background-color: #ceecff;
+}
+
 .list:hover {
   background-color: #ddd;
 }
