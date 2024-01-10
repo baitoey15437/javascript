@@ -292,30 +292,37 @@ const videosList =  [
     ],
   },
 ];
-console.log(videosList)
 
+// default video play
 document.getElementById("show_video").innerHTML = 
-  `<video id="video_default"  class="video-js vjs-default-skin" width="1120" height="600" controls autoplay>
-  <source id= "source_video" type="application/x-mpegURL" src="https://d3gzgvi11qls5g.cloudfront.net/008ac9d5-6f93-4f45-9657-9c36f10b2ba9/hls/a9546d2e-dc63-4eb2-ad11-530669caf228.m3u8">
-</video>
+  `<video id="video_default"  class="video-js vjs-default-skin main-video" controls autoplay>
+    <source type="application/x-mpegURL" src="https://d3gzgvi11qls5g.cloudfront.net/008ac9d5-6f93-4f45-9657-9c36f10b2ba9/hls/a9546d2e-dc63-4eb2-ad11-530669caf228.m3u8">
+  </video>
     `;
 videojs('video_default').play();
 
+// list all category
+var category = videosList;
+for (let x in category ){
+  document.getElementById("category_name").innerHTML += 
+  `<button onclick = "ListVideos(${x})">${category[x].name}</button>`
+}
+
+// playlist video  ==> background-color : active
 var video_category = videosList[0].samples;
 for (let y in video_category ){
   if (y == 0) {
     document.getElementById("list_video").innerHTML += 
-    `<a href="#" onclick="getViideo(0,${y})">
+    `<a href="#" onclick="getVideo(0,${y})">
     <table class="list active">
       <tr>
           <td class="list-img"><img src="${video_category[y].img}" alt="" width="150" height="100"></td>
           <td class="list-desc">${video_category[y].name}</td>
         </tr>
-    </table>
-    `
+    </table>`
   } else {
     document.getElementById("list_video").innerHTML += 
-    `<a href="#" onclick="getViideo(0,${y})">
+    `<a href="#" onclick="getVideo(0,${y})">
     <table class="list">
       <tr>
           <td class="list-img"><img src="${video_category[y].img}" alt="" width="150" height="100"></td>
@@ -324,16 +331,9 @@ for (let y in video_category ){
     </table>
     `
   }
-  
 }
 
-var category = videosList;
-for (let x in category ){
-  document.getElementById("category_name").innerHTML += 
-  `<button onclick = "ListViideo(${x})">${category[x].name}</button>`
-}
-
-
+// event onclick video ==> change background
 let ListVideo = document.querySelectorAll('.list');
 ListVideo.forEach(video => {
   video.onclick = () => {
@@ -342,13 +342,33 @@ ListVideo.forEach(video => {
   }
 })
 
+// change main video
+const getVideo = (category_index,video_index) => {
+  var id = "video_" + Number(new Date());
+  var video = videosList[category_index].samples[video_index];
+  document.getElementById("title").innerHTML = video.name;
+  var type;
+  if (category_index == '5') {
+    type = "video/mp4";
+  } else {
+    type = "application/x-mpegURL";
+  }
+  
+  document.getElementById("show_video").innerHTML = 
+  `<video id="${id}"  class="video-js vjs-default-skin main-video" controls autoplay>
+      <source type="${type}" src="${video.uri}">
+    </video>
+    `;
+  videojs(id).play();
+}
 
-const ListViideo = (x) => {
+// change list video
+const ListVideos = (x) => {
   document.getElementById("list_video").innerHTML = "";
   let list_samples = videosList[x].samples
   for (let y in list_samples ){
     document.getElementById("list_video").innerHTML += 
-    `<a href="#" onclick="getViideo(${x},${y})">
+    `<a href="#" onclick="getVideo(${x},${y})">
     <table class="list" id="click_${x}_${y}">
       <tr>
           <td class="list-img"><img src="${list_samples[y].img}" alt="" width="150" height="100"></td>
@@ -362,25 +382,27 @@ const ListViideo = (x) => {
       ListVideo.forEach(list => list.classList.remove("active"));
       video.classList.add("active")
     }
-})
-
+  })
 }
 
-const getViideo = (category_index,video_index) => {
-  var id = "video_" + Number(new Date());
-  var video = videosList[category_index].samples[video_index];
-  document.getElementById("title").innerHTML = video.name;
-  var type;
-  if (category_index == '5') {
-    type = "video/mp4";
-  } else {
-    type = "application/x-mpegURL";
+// search video
+const searchVideo = () => {
+  document.getElementById("list_video").innerHTML = "";
+  var search = new RegExp(document.getElementById("search").value, "i") ;
+  for(const [category_index , video] of videosList.entries()){
+    for(const [video_index , x] of video.samples.entries()){
+      let result = x.name.search(search);
+      if(result != -1){
+        document.getElementById("list_video").innerHTML += 
+        `<a href="#" onclick="getVideo(${category_index},${video_index})">
+        <table class="list">
+          <tr>
+              <td class="list-img"><img src="${x.img}" alt="" width="150" height="100"></td>
+              <td class="list-desc">${x.name}</td>
+            </tr>
+        </table>
+        `
+      }
+    }
   }
-  
-  document.getElementById("show_video").innerHTML = 
-  `<video id="${id}"  class="video-js vjs-default-skin" width="1120" height="600" controls autoplay>
-      <source id= "source_video" type="${type}" src="${video.uri}">
-    </video>
-    `;
-  videojs(id).play();
 }

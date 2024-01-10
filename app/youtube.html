@@ -16,8 +16,8 @@
             <tr>
                 <td>
                     <img class="img-icon" style="float: left;" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Girl in a jacket" width="120" height="20">
-                    <input class="input-search" type="text" placeholder="Search..">
-                    <button class="search-container" type="submit"><i class="fa fa-search"></i></button>
+                    <input id="search" class="input-search" type="text" placeholder="Search..">
+                    <button class="search-container" type="submit" onclick="searchVideo()"><i class="fa fa-search"></i></button>
                     <button><i class="fa fa-microphone"></i></button>
                     <a href="#">Link</a>
                     <a href="#">Link</a>
@@ -31,7 +31,7 @@
 <!-- body left -->
         <div class="column1">
             <div>  
-                <p id="show_video"></p> 
+                <p class="main-video" id="show_video"></p> 
                 <h2 id="title">Test subtitle</h2>  
                 <script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.14.1/videojs-contrib-hls.js"></script>
